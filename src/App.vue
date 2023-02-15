@@ -10,7 +10,7 @@
     <li v-for="(hero, index) in dcHeros" :key="index">{{ hero.name }}</li>
   </ul>
   <form @submit.prevent="addHero()">
-    <input v-model.lazy="newhero" placeholder="Type hero name here" />
+    <input v-model.trim="newhero" placeholder="Type hero name here" />
     <button :disabled="isDisabled">Click Here</button>
     <button type="submit">Add Hero</button>
   </form>
@@ -29,7 +29,7 @@ export default {
       return this.dcHeros.length + " " + "herosses";
     },
     randomNumber() {
-      return Math.floor(Math.random() * 100);
+      return this.dcHeros.length + Math.floor(Math.random() * 100);
     },
   },
   methods: {
