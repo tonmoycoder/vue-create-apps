@@ -3,8 +3,11 @@
   <ul>
     <li v-for="(hero, index) in dcHeros" :key="index">{{ hero.name }}</li>
   </ul>
-  <input v-model.lazy="newhero" />
-  <button :disabled="isDisabled">Click Here</button>
+  <form action="">
+    <input v-model.lazy="newhero" />
+    <button :disabled="isDisabled">Click Here</button>
+    <button type="submit" @keydown="newhero = 'Wonder Woman'">Change</button>
+  </form>
   <!-- <h1 v-once>count is : {{ counter }}</h1>
 
   <h2 v-else-if="isShowing === null">This is v-else-if part</h2>
