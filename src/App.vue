@@ -3,12 +3,7 @@
   <ul>
     <li v-for="(hero, index) in dcHeros" :key="index">{{ hero.name }}</li>
   </ul>
-  <form
-    @submit.prevent="
-      dcHeros.push({ name: newhero });
-      newhero = '';
-    "
-  >
+  <form @submit.prevent="addHero">
     <input v-model.lazy="newhero" placeholder="Type hero name here" />
     <button :disabled="isDisabled">Click Here</button>
     <button type="submit">Add Hero</button>
@@ -23,6 +18,14 @@
 
 <script>
 export default {
+  methods: {
+    addHero() {
+      if (this.newhero !== "") {
+        this.dcHeros.push({ name: this.newhero });
+        this.newhero = "";
+      }
+    },
+  },
   data() {
     return {
       title: `<h1>This is a vue testing</h1>`,
