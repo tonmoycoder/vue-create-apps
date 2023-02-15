@@ -3,7 +3,7 @@
   <ul>
     <li v-for="(hero, index) in dcHeros" :key="index">{{ hero.name }}</li>
   </ul>
-  <input :[attr]="newhero" />
+  <input v-model.lazy="newhero" />
   <button :disabled="isDisabled">Click Here</button>
   <!-- <h1 v-once>count is : {{ counter }}</h1>
 
@@ -20,7 +20,6 @@ export default {
       title: `<h1>This is a vue testing</h1>`,
       newhero: "iron man",
       isDisabled: true,
-      attr: "value",
       isShowing: true,
       counter: 0,
       dcHeros: [
