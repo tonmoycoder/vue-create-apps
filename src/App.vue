@@ -3,10 +3,10 @@
   <ul>
     <li v-for="(hero, index) in dcHeros" :key="index">{{ hero.name }}</li>
   </ul>
-  <form action="">
+  <form @submit.prevent="newhero = 'Wonder Woman'">
     <input v-model.lazy="newhero" />
     <button :disabled="isDisabled">Click Here</button>
-    <button type="submit" @keydown="newhero = 'Wonder Woman'">Change</button>
+    <button type="submit">Change</button>
   </form>
   <!-- <h1 v-once>count is : {{ counter }}</h1>
 
