@@ -1,5 +1,6 @@
 <template>
   <h1>Dc superheros {{ heroCount }}</h1>
+  <p>{{ fullName }}</p>
   <h3>This is a random nummber {{ randomNumber }}</h3>
   <h3>This is a random nummber {{ randomNumber }}</h3>
   <h3>This is a random nummber {{ randomNumber }}</h3>
@@ -30,6 +31,9 @@ export default {
     },
     randomNumber() {
       return this.dcHeros.length + Math.floor(Math.random() * 100);
+    },
+    fullName() {
+      return `${this.dcHeros[0].name} ${this.dcHeros[1].name}`;
     },
   },
   methods: {
