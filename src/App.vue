@@ -1,6 +1,10 @@
 <template>
   <h1>Dc superheros {{ heroCount }}</h1>
-  <p>{{ fullName }}</p>
+  <p>
+    <strong>Full name was {{ fullname }}</strong>
+  </p>
+  <h2>{{ fname }}</h2>
+  <h2>{{ lname }}</h2>
   <h3>This is a random nummber {{ randomNumber }}</h3>
   <h3>This is a random nummber {{ randomNumber }}</h3>
   <h3>This is a random nummber {{ randomNumber }}</h3>
@@ -15,6 +19,7 @@
     <button :disabled="isDisabled">Click Here</button>
     <button type="submit">Add Hero</button>
   </form>
+  <button @click="setFullName">Set Full Name</button>
   <!-- <h1 v-once>count is : {{ counter }}</h1>
 
   <h2 v-else-if="isShowing === null">This is v-else-if part</h2>
@@ -32,8 +37,15 @@ export default {
     randomNumber() {
       return this.dcHeros.length + Math.floor(Math.random() * 100);
     },
-    fullName() {
-      return `${this.dcHeros[0].name} ${this.dcHeros[1].name}`;
+    fullname: {
+      get() {
+        return `${this.fname} ${this.lname}`;
+      },
+      set(fullname) {
+        const fullnameR = fullname.split(" ");
+        this.fname = fullnameR[0];
+        this.lname = fullnameR[1];
+      },
     },
   },
   methods: {
@@ -46,11 +58,16 @@ export default {
     randomNumberM() {
       return Math.floor(Math.random() * 100);
     },
+    setFullName() {
+      this.fullname = "Binod Thapa";
+    },
   },
   data() {
     return {
       title: `<h1>This is a vue testing</h1>`,
       newhero: "iron man",
+      fname: "Tanver Islam",
+      lname: "Tonmoy",
       isDisabled: true,
       isShowing: true,
       counter: 0,
